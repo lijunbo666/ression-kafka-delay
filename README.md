@@ -11,6 +11,7 @@ redssion和kafka延迟消费工具自定义的相关工具实现。
    相关实现文章：https://blog.csdn.net/godwei_ding/article/details/118658888
 
 2.注意事项
+
   1)为了防止redssion中延迟队列和阻塞队列执行过程中丢失消息，请更新redssion版本到 redisson->3.15.0的最新版本，解决了此问题，通过分析，最终原因如下
   
   2)blpop等待超时或者take都有风险，如果不升级版本建议用poll()，然后起个定时任务去poll
