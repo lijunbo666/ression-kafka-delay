@@ -1,0 +1,59 @@
+
+server:
+  port: 8089
+spring:
+  application:
+    name: aop-learn
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: admin
+#    password: admin
+  redis:
+    host: 192.168.20.206
+    port: 6379
+    password: YZniTp2cS4HvfOVVHS2xSFSwD
+  kafka:
+    bootstrap-servers: 192.168.20.206:9092
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: delay-order-test
+      enable-auto-commit: false
+    listener:
+      #手动立即确认手动消息
+      ack-mode: MANUAL_IMMEDIATE
+xxl:
+  job:
+    accessToken:
+    executor:
+      appname: aop-learn
+      ip:
+      logpath: /data/applogs/xxl-job/jobhandler
+      logretentiondays: 30
+      port: 6379
+      address:
+    admin:
+      addresses: http://localhost:8084/xxl-job-admin
+
+delay:
+  redisson:
+   ## 打开延迟功能
+    enable: true
+    ## redis延迟队列key
+    registerService: order
+    ##消费者轮询时睡眠时长，默认 500毫秒--暂时没用到
+    consumerSleep: 500
+
+kafka:
+  delay:
+    bootstrap-servers: 192.168.20.206:9092
+    consumer:
+      groupId: delay-order-test
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
