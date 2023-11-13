@@ -6,7 +6,7 @@ redssion和kafka延迟消费工具自定义的相关工具实现。
 
    1)post接口请求:http://localhost:8089/test/send 并设置延迟消费参数
 
-   2)TestController中delayOrder为监听消费方法
+   2)TestController中delayOrder方法为监听消费方法
 
    相关实现文章：https://blog.csdn.net/godwei_ding/article/details/118658888
 
